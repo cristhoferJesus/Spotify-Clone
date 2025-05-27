@@ -1,10 +1,10 @@
 import './App.css';
-import { Stack, Button } from '@mui/material'
+import { Stack, Button, Box } from '@mui/material'
 
 
 function App() {
 	return (
-		<div className="App">
+		<Box className="App">
 			<h1>Techover Self Made - Spotify</h1>
 			 <Stack spacing={2} direction="row">
 				<Button variant="text">Text</Button>
@@ -12,7 +12,7 @@ function App() {
 				<Button variant="outlined">Outlined</Button>
 			</Stack>
 
-		</div>
+		</Box>
 
 	);
 }
