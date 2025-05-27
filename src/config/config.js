@@ -1,8 +1,8 @@
-export const authEndpoint = "https://acounts.spotify.com7authorize";
+export const authEndpoint = "https://accounts.spotify.com/authorize";
 export const clientId  = process.env.REACT_APP_CLIENT_ID;
 export const liveURL = process.env.REACT_APP_LIVE_URL;
 export const devURL = "http://127.0.0.1:3000/callback/";
-export const redirectURL = process.env.NODE.ENV === 'production' ? liveURL : devURL;
+export const redirectURL = process.env.NODE_ENV === 'production' ? liveURL : devURL;
 
 
 export const scopes = [
