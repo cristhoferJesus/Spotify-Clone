@@ -8,6 +8,7 @@ import { redirectURL } from './config/config';
 import { ThemeProvider } from '@mui/system';
 import { themeOptions } from './theme/material-theme';
 
+import { BrowserRouter } from 'react-router-dom';
 
 const spotifyApi = new SpotifyWebApi({
   clientId: import.meta.env.VITE_CLIENT_ID,
@@ -21,9 +22,11 @@ const spotifyApi = new SpotifyWebApi({
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-      <ThemeProvider theme={themeOptions} >
-          <App spotifyApi={spotifyApi} />
-      </ThemeProvider>
-  </React.StrictMode>,
+    <React.StrictMode>
+      <BrowserRouter>
+        <ThemeProvider theme={themeOptions} >
+            <App spotifyApi={spotifyApi} />
+        </ThemeProvider>
+      </BrowserRouter>  
+    </React.StrictMode>,
 )
