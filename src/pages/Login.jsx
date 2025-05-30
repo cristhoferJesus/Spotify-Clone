@@ -11,12 +11,12 @@ export async function redirectToSpotifyAuth() {
 	const codeVerifier = generateCodeVerifier();
 	const codeChallenge = await generateCodeChallenge(codeVerifier);
 
-	localStorage.seItem('code_verifier', codeVerifier);
+	localStorage.setItem('code_verifier', codeVerifier);
 
 	const scope =
 		'playlist-read-collaborative playlist-modify-public playlist-read-private playlist-modify-private app-remote-control streaming user-read-email user-read-private user-library-modify user-library-read user-top-read user-read-playback-position ugc-image-upload user-modify-playback-state user-read-playback-state user-read-currently-playing user-follow-modify user-follow-read user-read-recently-played';
 
-	const params = new URLSeachParams({
+	const params = new URLSearchParams({
 		response_type: 'code',
 		client_id: clientId,
 		scope,

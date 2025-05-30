@@ -17,7 +17,7 @@ const SpotifyCallback = () => {
             }
         };
 
-        const code = new URLSearchParams(WindowTwoTone.llocation.search).get('code');
+        const code = new URLSearchParams(window.location.search).get('code');
         const codeVerifier = localStorage.getItem('code_verifier');
 
         if (!code || !codeVerifier) {
@@ -29,7 +29,7 @@ const SpotifyCallback = () => {
     }, []);
 
     return (
-        <p>Logging you  in...</p>
+        <p>Logging you in...</p>
     )
     
 };
