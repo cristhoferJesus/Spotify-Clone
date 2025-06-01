@@ -6,12 +6,12 @@ import { Outlet } from 'react-router-dom';
 import { getAccessTokenFromStorage } from "../../utils/getAccessTokenFromStorage";
 
 const Dashboard = ( { spotifyApi } ) => {
-    const [token] = useState(getAccessTokenFromStorage());
+    const [token, setToken] = useState(getAccessTokenFromStorage());
     const  [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=> {
         const onMount = async () => {
-            await spotifyApi.setAccesToken(token);
+            await spotifyApi.setAccessToken(token);
             setIsLoading(false);
         };
 
@@ -38,7 +38,7 @@ const Dashboard = ( { spotifyApi } ) => {
                     sx={{ flex: 1, overFlowY: 'auto', display: 'flex' }}
                 
                 >
-                    <SideNav spotifyApi={spotifyApi} token={token} />
+                    {/* <SideNav spotifyApi={spotifyApi} token={token} /> */}
                     <Outlet />
                 </Box>
 

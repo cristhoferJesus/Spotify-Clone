@@ -39,7 +39,7 @@ export const getToken = async (code) => {
                     code,
                     redirect_uri: devURL,
                     code_verifier: codeVerifier
-            })
+            }),
         };
 
         const body = await fetch(url, payload);

@@ -20,7 +20,7 @@ export async function redirectToSpotifyAuth() {
 		response_type: 'code',
 		client_id: clientId,
 		scope,
-		redirect_url: devURL,
+		redirect_uri: devURL,
 		code_challenge_method: 'S256',
 		code_challenge: codeChallenge
 	});
