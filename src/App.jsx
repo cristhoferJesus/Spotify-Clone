@@ -14,18 +14,22 @@ import Home from './pages/Home';
 import Login from './pages/Login'
 
 
+
+
 function App({ spotifyApi }) {
 	return (
 		<Box className="App">
+			
 			<Routes>
 				<Route path="/login" element={<Login />} />
 				<Route path="/callback" element={<SpotifyCallback />} />
 				<Route path="/dashboard" element={<ProtectedRoute> <Dashboard spotifyApi={spotifyApi} /> </ProtectedRoute>} />
-				<Route path="" element={ sessionStorage.getItem('spotifyToken') ? <Navigate to="/dashboard" replace /> : <Navigate to="/Loginn" replace />  } />
-				{/* <Route path="/playlist/:id" element={<Playlist spotifyApi={}  />} /> */}
-				{/* <Route path="/library" element={<Library spotifyApi={}  />} /> */}
-				<Route path="*" element={<Navigate to="/dashboard" />} />
+				<Route path="/Home" element={<Home spotifyApi={spotifyApi} />} />
+				<Route path="" element={ sessionStorage.getItem('spotifyToken') ? <Navigate to="/dashboard" replace /> : <Navigate to="/Home" replace />  } />
+				{/* <Route path="/playlist/:id" element={<Playlist spotifyApi={} /> } />  */}
+				{/* <Route path="*" element={<Navigate to="/dashboard" />} */}
 			</Routes>
+			
 		</Box>
 	);
 }

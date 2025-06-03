@@ -5,6 +5,8 @@ import { Outlet } from 'react-router-dom';
 
 import { getAccessTokenFromStorage } from "../../utils/getAccessTokenFromStorage";
 
+import SideNav from '../SideNav/SideNav';
+
 const Dashboard = ( { spotifyApi } ) => {
     const [token, setToken] = useState(getAccessTokenFromStorage());
     const  [isLoading, setIsLoading] = useState(true);
@@ -24,7 +26,7 @@ const Dashboard = ( { spotifyApi } ) => {
 
     }, []);
 
-
+    console.log('Se esta montando SiddeNav');
 
 
     return (
@@ -32,10 +34,11 @@ const Dashboard = ( { spotifyApi } ) => {
             sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}
         
         >
+            
             {!isLoading && (
 
                 <Box
-                    sx={{ flex: 1, overFlowY: 'auto', display: 'flex' }}
+                    sx={{ flex: 1, overflowY: 'auto', display: 'flex' }}
                 
                 >
                     {/* <SideNav spotifyApi={spotifyApi} token={token} /> */}
