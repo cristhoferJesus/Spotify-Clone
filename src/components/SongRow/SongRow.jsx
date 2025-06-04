@@ -1,10 +1,26 @@
-import { Grid, Avatar, Box, Typography } from '@mui/material';
+import { Grid, Avatar, Box, Typography, Skeleton } from '@mui/material';
 
 
 
 
 
-const SongRow = ({}) => {
+const SongRow = ({ images, title, artist, album, duration, i , loading }) => {
+
+    const image = images?.lenght > 0 ? images[0].url : null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
 		<Grid
 			container
@@ -19,21 +35,30 @@ const SongRow = ({}) => {
 			}}
 		>
 			<Grid sx={{ width: 35, display: 'flex', alignItems: 'center', fontSize: 16 }} item>
-				{/* Position */} 1
+				{i + 1}
 			</Grid>
 			<Grid sx={{ flex: 1, display: 'flex', alignItems: 'center', gap: 2 }} item>
-				{/* Title */}
-                <Avatar src={null} alt={null} variant='square' />
-                <Box>
-                    <Typography sx={{ fontSize: 16, color: 'text.primary'}} >Respirar</Typography>
-                    <Typography sx={{ fontSize: 12, color: 'text.secondary'}} >Jesus Adrian romero</Typography>
-                </Box>
+				{loading ? (
+					<Skeleton variant="rectangular" width={40} height={40} />
+				) : (
+					<Avatar src={image} alt={null} variant="square" />
+				)}
+
+				<Box>
+					<Typography sx={{ fontSize: 16, color: 'text.primary' }}>
+						{' '}
+						{loading ? <Skeleton width={130} height={24} /> : title}{' '}
+					</Typography>
+					<Typography sx={{ fontSize: 12, color: 'text.secondary' }}>
+						{loading ? <Skeleton width={50} height={18} /> : artist}
+					</Typography>
+				</Box>
 			</Grid>
-			<Grid xs={3} item sx={{ display: { xs: 'none', md: 'flex' } }}>
-				Zaqueo
+			<Grid xs={3} item sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
+				{loading ? <Skeleton width={50} height={24} /> : album}
 			</Grid>
 			<Grid xs={3} item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-				3:32
+				{loading ? <Skeleton width={50} height={24} /> : duration}
 			</Grid>
 		</Grid>
 	);
