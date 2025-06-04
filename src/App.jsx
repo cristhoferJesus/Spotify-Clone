@@ -12,11 +12,20 @@ import SpotifyCallback from './pages/SpotifyCallback';
 
 import Home from './pages/Home';
 import Login from './pages/Login'
+import Playlist from './pages/Playlist'
 
 
 
 
 function App({ spotifyApi }) {
+	const token = getAccessTokenFromStorage();
+
+
+	if (token) {
+		spotifyApi.setAccessToken(token);
+	}
+
+
 	return (
 		<Box className="App">
 			
@@ -26,7 +35,7 @@ function App({ spotifyApi }) {
 				<Route path="/dashboard" element={<ProtectedRoute> <Dashboard spotifyApi={spotifyApi} /> </ProtectedRoute>} />
 				<Route path="/Home" element={<Home spotifyApi={spotifyApi} />} />
 				<Route path="" element={ sessionStorage.getItem('spotifyToken') ? <Navigate to="/dashboard" replace /> : <Navigate to="/Home" replace />  } />
-				{/* <Route path="/playlist/:id" element={<Playlist spotifyApi={} /> } />  */}
+				<Route path="/playlist/:id" element={<Playlist spotifyApi={spotifyApi} token={token} /> } /> 
 				{/* <Route path="*" element={<Navigate to="/dashboard" />} */}
 			</Routes>
 			

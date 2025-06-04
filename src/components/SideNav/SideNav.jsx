@@ -31,7 +31,7 @@ const SideNav = ({ spotifyApi, token }) => {
         }
 
         getPlaylists();
-    }, [spotifyApi, token ])
+    }, [spotifyApi, token ]);
 
 
     const renderPlaylists = () => {

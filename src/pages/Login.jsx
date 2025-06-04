@@ -25,7 +25,7 @@ export async function redirectToSpotifyAuth() {
 		code_challenge: codeChallenge
 	});
 
-	window.location.href = `https://accounts.spotify.com/authorize?${params.toString()} `;
+	window.location.href = `https://accounts.spotify.com/authorize?${params.toString()}`;
 }
 
 const Login = () => {

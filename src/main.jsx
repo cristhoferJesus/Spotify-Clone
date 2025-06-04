@@ -17,9 +17,11 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 
+const token = sessionStorage.getItem("spotifyToken");
 
-
-
+if (token) {
+  spotifyApi.setAccessToken(token);
+}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
