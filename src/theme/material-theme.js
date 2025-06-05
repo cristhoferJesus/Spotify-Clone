@@ -9,7 +9,7 @@ export const themeOptions = createTheme({
             dark: '#3b5249',
             contrastText:'#ffffff'
         },
-        backgrounnd: {
+        background: {
             defult: '#000000',
             paper: '#121212'
         },

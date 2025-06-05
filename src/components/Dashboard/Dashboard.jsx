@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { Routes, Route } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import Player from "../Player/Player";
 
 import { getAccessTokenFromStorage } from "../../utils/getAccessTokenFromStorage";
 
@@ -26,7 +27,7 @@ const Dashboard = ( { spotifyApi } ) => {
 
     }, []);
 
-    console.log('Se esta montando SiddeNav');
+    
 
 
     return (
