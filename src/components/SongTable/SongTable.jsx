@@ -6,7 +6,33 @@ import SongRow from '../SongRow/SongRow'
 
 
 
-const SongTable = ({}) => {
+const SongTable = ({ songs, loading, spotifyApi }) => {
+
+	console.log({songs, loading, spotifyApi});
+
+
+	const renderSongs = () => {
+		if(loading){
+			return [1, 2, 3, 4, 5].map((e, i) => <SongRow loading={loading} key={i} i={i} images={null} />)
+		}
+
+
+		return songs.map((song, i) => (
+			<SongRow
+				album={song.album.name}
+				images={song.album.images}
+				artist={song.artists[0].name}
+				title={song.name}
+				duration={song.duration_ms / 1000}
+				key={i}
+				i={i}
+				position={song.position}
+				contextUri={song.contextUri}
+				spotifyApi={spotifyApi}
+			/>
+		));
+	};
+
 	return (
 		<Box
 			p={{ xs: 3, md: 4 }}
@@ -34,33 +60,7 @@ const SongTable = ({}) => {
 			<Box pb={2}>
 				<Divider sx={{ width: '100%', height: 1 }} />
 			</Box>
-			<SongRow
-				images={null}
-				title={' El Aire De Tu Casa '}
-				artist={'Jesus Adrian Romero'}
-				album="Aire De Tu Casa"
-				duration="4:14"
-				i={1}
-				loading={false}
-			/>
-				<SongRow
-				images={null}
-				title={' El Aire De Tu Casa '}
-				artist={'Jesus Adrian Romero'}
-				album="Aire De Tu Casa"
-				duration="4:14"
-				i={1}
-				loading={false}
-			/>
-				<SongRow
-				images={null}
-				title={' El Aire De Tu Casa '}
-				artist={'Jesus Adrian Romero'}
-				album="Aire De Tu Casa"
-				duration="4:14"
-				i={1}
-				loading={true}
-			/>
+			{renderSongs()}
 		</Box>
 	);
 };

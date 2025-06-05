@@ -43,7 +43,7 @@ const Playlist = ({ spotifyApi, token }) => {
                 const formattedSongs = formatSongs(items);
 
                 setSongs(formattedSongs);
-				console.log(formattedSongs);
+				
                 
                 
 
