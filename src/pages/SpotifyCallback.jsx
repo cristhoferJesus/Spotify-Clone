@@ -10,7 +10,7 @@ const SpotifyCallback = () => {
         const runCalllback = async (code) => {
             try {
                 await getToken(code);
-                navigate('/home');
+                navigate('/');
 
             } catch (error) {
                 console.error('Error handling Spotify callback', error);

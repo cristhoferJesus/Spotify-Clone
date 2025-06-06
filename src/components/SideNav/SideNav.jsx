@@ -3,7 +3,6 @@ import { Box, Divider } from '@mui/material';
 import NavItem from "../NavItem/NavItem";
 import HomeIcon from '@mui/icons-material/Home';
 import NavPlaylist from "../NavPlaylist/NavPlaylist";
-import { PlaylistPlay } from "@mui/icons-material";
 
 
 
@@ -17,7 +16,7 @@ const SideNav = ({ spotifyApi, token }) => {
     
     useEffect(() => {
         async function getPlaylists() {
-            if(!spotifyApi || token) return;
+            if(!spotifyApi || !token) return;
 
             try {
                 

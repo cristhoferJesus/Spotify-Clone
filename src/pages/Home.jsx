@@ -1,49 +1,17 @@
-import { Height } from '@mui/icons-material';
-import {Box, Button } from '@mui/material';
 
-import SideNav from '../components/SideNav/SideNav'
-import { getAccessTokenFromStorage } from '../utils/getAccessTokenFromStorage';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {Box, Button } from '@mui/material';
+import React from 'react';
 
 
 
 
 const Home = ({ spotifyApi }) => {
-    const navigate = useNavigate();
-    const [token , setToken] = useState(null);
-    // const token = sessionStorage.getItem('spotifyToken');
 
-    useEffect(() => {
-        const storedToken = getAccessTokenFromStorage();
-
-        if(!storedToken) {
-            console.warn('No se encontro token en sessioStorage.')
-            navigate('/login');
-            return;
-        }
-        setToken(storedToken);
-        spotifyApi.setAccessToken(storedToken);
-    },  [navigate, spotifyApi]);
-    
     
     
     
     return (
         <Box sx={{display: 'flex', Height: '100vh' }} >
-
-            <Box  sx={{
-            backgroundColor:  'Background.default',
-            width: 230,
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column'
-
-                }} >    
-
-            <SideNav spotifyApi={spotifyApi} token={token} />
-
-            </Box>
 
             <Box sx={{
                 flex: 1,
