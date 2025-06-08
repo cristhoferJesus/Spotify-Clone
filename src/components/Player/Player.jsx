@@ -11,6 +11,7 @@ const Player = ({ spotifyApi, token }) => {
 	const [device, setDevice] = useState();
 	const [duration, setDuration] = useState();
 	const [progress, setProgress] = useState();
+	const [active, setActive] = useState();
 	const [playerOverlayIsOpen, setPlayerOverlayIsOpen] = useState(false);
 
 	// conecta våra player
@@ -32,37 +33,17 @@ const Player = ({ spotifyApi, token }) => {
 		document.body.appendChild(script);
 
 		window.onSpotifyWebPlaybackSDKReady = () => {
-			console.log("SDK listo")
+			
 			const player = new window.Spotify.Player({
-				name: 'Esperame 2',
+				name: 'Current PC',
 				getOAuthToken: (cb) => {
-					console.log('pasando token al player:', token)
+					
 					cb(token);
 				},
 				volume: 0.5
 			});
 
-				player.addListener("initialization_error", ({ message }) => {
-				console.error("❌ Error de inicialización:", message);
-			});
-			player.addListener("authentication_error", ({ message }) => {
-				console.error("❌ Error de autenticación:", message);
-			});
-			player.addListener("account_error", ({ message }) => {
-				console.error("❌ Error de cuenta:", message);
-			});
-			player.addListener("playback_error", ({ message }) => {
-				console.error("❌ Error de reproducción:", message);
-			});
-
-
-
-
-
-
-
-
-
+		
 
 
 
@@ -89,6 +70,12 @@ const Player = ({ spotifyApi, token }) => {
 				setProgress(progress);
 				setPaused(state.paused);
 				setTrack(state.track_window.current_track);
+
+
+
+					    player.getCurrentState().then( (state) => { 
+						!state ? setActive(false) : setActive(true) 
+						});
 			});
 
 			player.connect();
@@ -108,17 +95,17 @@ const Player = ({ spotifyApi, token }) => {
 	}, [localPlayer]);
 
 	// transfer a user's playback
-	useEffect(() => {
-		const transferPlayback = async () => {
-			if (device) {
-				const res = await spotifyApi.getMyDevices();
-				console.log(res);
-				await spotifyApi.transferMyPlayback([device], false);
-			}
-		};
+	// useEffect(() => {
+	// 	const transferPlayback = async () => {
+	// 		if (device) {
+	// 			const res = await spotifyApi.getMyDevices();
+	// 			console.log(res);
+	// 			await spotifyApi.transferMyPlayback([device], false);
+	// 		}
+	// 	};
 
-		transferPlayback();
-	}, [device, spotifyApi]);
+	// 	transferPlayback();
+	// }, [device, spotifyApi]);
 
 	return (
 		<Box>
@@ -153,12 +140,14 @@ const Player = ({ spotifyApi, token }) => {
 					md={4}
 					item
 				>
+					{active ?
 					<PlayerControls
 						progress={progress}
 						is_paused={is_paused}
 						duration={duration}
 						player={localPlayer}
-					/>
+					/> : <Box>Please transfer Playback</Box>
+					}
 				</Grid>
 				<Grid xs={6} md={4} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }} item>
 					Volume
