@@ -8,7 +8,7 @@ import SongRow from '../SongRow/SongRow'
 
 const SongTable = ({ songs, loading, spotifyApi }) => {
 
-	console.log({songs, loading, spotifyApi});
+	// console.log({songs, loading, spotifyApi});
 
 
 	const renderSongs = () => {
