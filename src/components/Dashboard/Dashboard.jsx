@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 import Player from "../Player/Player";
 import SideNav from '../SideNav/SideNav';
+import MobileNav from "../MobileNav/MobileNav";
 
 import { getAccessTokenFromStorage } from "../../utils/getAccessTokenFromStorage";
 
@@ -48,6 +49,7 @@ const Dashboard = ( { spotifyApi } ) => {
 
             )}
             {token && !isLoading && <Player spotifyApi={spotifyApi} token={token} />}
+            <MobileNav />
 
 
         </Box>
