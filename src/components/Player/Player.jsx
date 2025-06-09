@@ -2,6 +2,7 @@ import { Box, Grid, Typography, Avatar } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import PlayerControls from '../PlayerControls/PlayerControls';
+import PlayerVolume from '../PlayerVolume/PlayerVolume'
 
 const Player = ({ spotifyApi, token }) => {
 	// state varibler som ska kontrollera vad ska ska visas som infor på våra player
@@ -150,7 +151,7 @@ const Player = ({ spotifyApi, token }) => {
 					}
 				</Grid>
 				<Grid xs={6} md={4} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }} item>
-					Volume
+					<PlayerVolume player={localPlayer} />
 				</Grid>
 			</Grid>
 		</Box>
