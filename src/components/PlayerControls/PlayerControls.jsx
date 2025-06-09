@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 
 
-const PlayerControls = ({ is_paused, duration, player, progress}) => {
+const PlayerControls = ({ is_paused, duration, player, progress }) => {
 
     const [currentProgress, setCurrentProgress] = useState(progress);
 
@@ -53,7 +53,7 @@ const PlayerControls = ({ is_paused, duration, player, progress}) => {
 					size="small"
 					sx={{ color: 'text.primary' }}
 					onClick={() => {
-						setCurrentProgress(0);
+						// setCurrentProgress(0);
 						player.nextTrack();
 					}}
 				>
