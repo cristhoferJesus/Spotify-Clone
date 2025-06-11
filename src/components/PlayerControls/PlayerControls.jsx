@@ -28,7 +28,7 @@ const PlayerControls = ({ is_paused, duration, player, progress }) => {
 
 
     return (
-		<Stack direction={'column'} spacing={2} justify="center" alignItems="cneter" sx={{ width: '100%' }}>
+		<Stack direction={'column'} spacing={2} justify="center" alignItems="center" sx={{ width: '100%' }}>
 			<Stack spacing={1} direction={'row'} justifyContent="center" alignItems="center" sx={{ width: '100%' }}>
 				<IconButton
 					size="small"
@@ -65,7 +65,7 @@ const PlayerControls = ({ is_paused, duration, player, progress }) => {
 				<Typography sx={{ color: 'text.secondary', fontSize: 12 }}> {formatTime(currentProgress)} </Typography>
 				<Slider
 					max={duration}
-					value={currentProgress}
+					value={currentProgress ?? 0}
 					min={0}
 					size="medium"
 					onChange={(event, value) => {

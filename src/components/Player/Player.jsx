@@ -88,7 +88,7 @@ const Player = ({ spotifyApi, token }) => {
 			await localPlayer.connect();
 		}
 
-		// connect();
+		connect();
 		return () => {
 			localPlayer.disconnect();
 		};
@@ -136,7 +136,7 @@ const Player = ({ spotifyApi, token }) => {
 					</Box>
 				</Grid>
 				<Grid
-					sx={{ display: { sx: 'none', md: 'flex' }, justifyContent: 'center', alignItems: 'center' }}
+					sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center', alignItems: 'center' }}
 					md={4}
 					item
 				>

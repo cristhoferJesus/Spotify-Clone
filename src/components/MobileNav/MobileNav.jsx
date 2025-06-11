@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 const MobileNav = () => {
 
-    const nav = useNavigate();
     const [value, setValue] = useState(0);
+    const nav = useNavigate();
 
     return (
 		<Box sx={{ display: { xs: 'block', md: 'none' } }}>

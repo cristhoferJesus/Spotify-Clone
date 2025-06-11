@@ -24,7 +24,7 @@ const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay, progress, is_paused,
 			<Container sx={{ height: '100%', background: 'linear-gradient(0deg, #121212, #39d47250 100%);' }}>
 				<Grid container direction="column" justifyContent="space-between" sx={{ height: '100%' }}>
 					<Grid item xs={1} sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
-						<IconButton onClick={closeOverlay} sx={{ paddingLeft: 0 }}>
+						<IconButton onClick={closeOverlay} sx={{ paddingLeft: '0px' }}>
 							<KeyboardArrowDownIcon fontSize="large" sx={{ color: 'text.primary' }} />
 						</IconButton>
 					</Grid>
