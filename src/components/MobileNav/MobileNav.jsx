@@ -17,10 +17,10 @@ const MobileNav = () => {
 				sx={{ backgroundColor: 'background.paper', color: 'text.secondary' }}
 				showLabels
 				value={value}
-				onChange={(e, value) => setValue(value)}
+				onChange={(_, value) => setValue(value)}
 			>
-                <BottomNavigationAction  label="Home"  icon={<Home />} onClick={()=> nav('/')} />
-                <BottomNavigationAction  label="Ditt bibliotek"  icon={<List />} onClick={()=> nav('/library')} />
+                <BottomNavigationAction  label="Home"  icon={<Home />} onClick={() => nav('/')} />
+                <BottomNavigationAction  label="Ditt bibliotek"  icon={<List />} onClick={() => nav('/dashboard/library')} />
 
             </BottomNavigation>
 		</Box>

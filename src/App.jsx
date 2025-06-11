@@ -2,7 +2,7 @@ import './App.css';
 import { Box } from '@mui/material'
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import ProtectedRoute from './components/NavPlaylist/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import Dashboard from './components/Dashboard/Dashboard';
 import SpotifyCallback from './pages/SpotifyCallback';
@@ -10,12 +10,12 @@ import SpotifyCallback from './pages/SpotifyCallback';
 import Home from './pages/Home';
 import Login from './pages/Login'
 import Playlist from './pages/Playlist'
+import Library from './pages/Library';
 
 
 
 
 function App({ spotifyApi }) {
-
 	return (
 		<Box className="App">
 			<Routes>
@@ -31,6 +31,7 @@ function App({ spotifyApi }) {
 				>
 					<Route path="" element={<Home />} />
 					<Route path="playlist/:id" element={<Playlist spotifyApi={spotifyApi}  />} />
+					<Route path="library" element={<Library spotifyApi={spotifyApi}  />} />
 				</Route>
 
 				<Route path="*" element={<Navigate to="/dashboard"  />} />

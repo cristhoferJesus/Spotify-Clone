@@ -5,7 +5,7 @@ import PlayerControls from '../PlayerControls/PlayerControls'
 
 
 
-const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay, progress, is_paused, duration, player, current_track }) => {
+const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay, progress, is_paused, duration, player, current_track, active }) => {
     return (
 		<Box
 			id="PlayerOverlay"
@@ -38,7 +38,17 @@ const PlayerOverlay = ({ playerOverlayIsOpen, closeOverlay, progress, is_paused,
 						<Typography sx={{ color: 'text.secondary', fontSize: '18px' }}> {current_track?.artists[0].name} </Typography>
 					</Grid>
 					<Grid item xs={2}>
-						<PlayerControls is_paused={is_paused} duration={duration} player={player} progress={progress}  />
+						{active ? (
+							<PlayerControls
+								progress={progress}
+								is_paused={is_paused}
+								duration={duration}
+								player={player}
+							/>
+						) : (
+							<Box>Please transfer Playback</Box>
+						)}
+
 					</Grid>
 				</Grid>
 			</Container>

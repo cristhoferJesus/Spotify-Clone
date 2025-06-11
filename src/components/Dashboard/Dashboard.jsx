@@ -10,18 +10,20 @@ import { getAccessTokenFromStorage } from "../../utils/getAccessTokenFromStorage
 
 
 const Dashboard = ( { spotifyApi } ) => {
-    const token = useState(getAccessTokenFromStorage());
+    const [token, setToken] = useState(null);
     const  [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=> {
-        const onMount = async () => {
-            await spotifyApi.setAccessToken(token);
-            setIsLoading(false);
-        };
 
-        if (token) {
-            onMount();
-        }
+        const storedToken = getAccessTokenFromStorage();
+
+        
+        if (storedToken) {
+            spotifyApi.setAccessToken(storedToken);
+                setToken(storedToken);
+                setIsLoading(false);
+            };
+        
 
 
 
@@ -33,7 +35,7 @@ const Dashboard = ( { spotifyApi } ) => {
 
     return (
         <Box
-            sx={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}
+            sx={{ width: '100%', height: '125vh', display: 'flex', flexDirection: 'column' }}
         
         >
             
@@ -44,11 +46,11 @@ const Dashboard = ( { spotifyApi } ) => {
                 
                 >
                     <SideNav spotifyApi={spotifyApi} token={token} />
-                    <Outlet />
+                    <Outlet context={{ spotifyApi, token }} />
                 </Box>
 
             )}
-            {token && !isLoading && <Player spotifyApi={spotifyApi} token={token} />}
+            {token && !isLoading && <Player spotifyApi={spotifyApi}  />}
             <MobileNav />
 
 

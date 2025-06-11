@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import PlayerControls from '../PlayerControls/PlayerControls';
 import PlayerVolume from '../PlayerVolume/PlayerVolume'
 import PlayerOverlay from '../PlayerOverlay/PlayerOverlay'
+import { getAccessTokenFromStorage } from '../../utils/getAccessTokenFromStorage';
 
 const Player = ({ spotifyApi, token }) => {
 	// state varibler som ska kontrollera vad ska ska visas som infor på våra player
@@ -21,10 +22,8 @@ const Player = ({ spotifyApi, token }) => {
 	// conecta våra player
 	useEffect(() => {
 
-		if (!token) {
-			console.warn("Token no disponible");
-			return;
-		}
+
+		const token = getAccessTokenFromStorage();
 
 		const script = document.createElement('script');
 		script.src = 'https://sdk.scdn.co/spotify-player.js';
@@ -163,6 +162,7 @@ const Player = ({ spotifyApi, token }) => {
 				duration={duration}
 				player={localPlayer}
 				current_track={current_track}
+				active={active}
 			/>
 		</Box>
 	);
